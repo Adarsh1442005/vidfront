@@ -42,7 +42,7 @@ const offer=await peer.createOffer();
 await peer.setLocalDescription(offer);
 peer.onicecandidate=(event)=>{
 if(event.candidate){
-socket.emit("ice-candidate",{to:receiverId,candidate:event.candidate});
+socket.emit("ice-candidate",{to:receiverid,candidate:event.candidate});
   
 };
 
@@ -100,7 +100,7 @@ setoff(offer);
 };
 //answercall
 const ans=async ({answer})=>{
-     await peeRef.current.setRemoteDescription(new RTCSessionDescription(answer));
+     await peerRef.current.setRemoteDescription(new RTCSessionDescription(answer));
 
 };
 const cand=async({candidate}) => {
