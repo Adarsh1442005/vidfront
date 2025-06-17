@@ -84,7 +84,7 @@ const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false})
   };
   peerRef.current=peer;
   if(candi){
-    peerRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+    peerRef.current.addIceCandidate(new RTCIceCandidate(candi));
   }
 
 
