@@ -15,6 +15,8 @@ const[caller,setcaller]=useState(false);
 const[receiver,setreceive]=useState(false);
 const[connect,setconnect]=useState(false);
 const[callerrec,setcallerrec]=useState(false);
+const[fr,setfr]=useState("");
+const[off,setoff]=useState(null);  
 //imp
 const localVideoRef=useRef();
 const remoteVideoRef=useRef();
@@ -45,8 +47,6 @@ peerRef.current=peer;
 
 }
 //accept call
-let fr;
-let off;
 
 const accept=async ()=>{
 setcallerrec(true);
@@ -75,8 +75,8 @@ const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false})
 }
 //receive call
 const receive=async ({from ,offer})=>{
-  fr=from;  
-off=offer; 
+  setfr(from) ; 
+setoff(offer);
  setreceive(true); 
  
 
