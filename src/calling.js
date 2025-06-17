@@ -45,13 +45,13 @@ peer.onicecandidate=(event)=>{
 if(event.candidate){
 socket.emit("ice-candidate",{to:receiverid,candidate:event.candidate});
   
-};  
+} 
 peerRef.current=peer;
   
 
 
 
-}
+}}
 //accept call
 
 const accept=async ()=>{
@@ -351,4 +351,4 @@ return (
 
 
 
-}
+};
