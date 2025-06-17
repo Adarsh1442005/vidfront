@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Receiver } from "./receive";
 import { Initiate } from "./inititatecall";
 import { useNavigate } from 'react-router-dom';
-;
+
 export const Call=()=>{
 const socket = io("https://vidback-2.onrender.com");
 const[userid,setuserid]=useState("");
