@@ -16,7 +16,8 @@ const[receiver,setreceive]=useState(false);
 const[connect,setconnect]=useState(false);
 const[callerrec,setcallerrec]=useState(false);
 const[fr,setfr]=useState("");
-const[off,setoff]=useState(null);  
+const[off,setoff]=useState(null);
+const[candi,setcandi]=useState(null);  
 //imp
 const localVideoRef=useRef();
 const remoteVideoRef=useRef();
@@ -100,11 +101,14 @@ const ans=async ({answer})=>{
 
 };
 const cand=async({candidate}) => {
-    if(candidate){
+    if(peerRef.current){
      peerRef.current.addIceCandidate(new RTCIceCandidate(candidate));
  
       
     }
+  else{
+    setcandi(candidate);
+  }
 
 };
 socket.on("receivecall",receive);
