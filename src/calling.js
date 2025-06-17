@@ -40,18 +40,14 @@ peer.ontrack=(event)=>{
 };
 const offer=await peer.createOffer();
 await peer.setLocalDescription(offer);
+socket.emit("calluser",{to:receiverid, offer,from:userid});
 peer.onicecandidate=(event)=>{
 if(event.candidate){
 socket.emit("ice-candidate",{to:receiverid,candidate:event.candidate});
   
-};
-
-
-  
-};
-  
-socket.emit("calluser",{to:receiverid, offer,from:userid});
+};  
 peerRef.current=peer;
+  
 
 
 
