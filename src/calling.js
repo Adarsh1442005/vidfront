@@ -58,7 +58,7 @@ peerRef.current=peer;
 const accept=async ()=>{
 setcallerrec(true);
 setreceive(false);
-const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false});
+const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
   localVideoRef.current.srcObject=stream;
   const peer=new RTCPeerConnection();
   const tr=(track)=>{
