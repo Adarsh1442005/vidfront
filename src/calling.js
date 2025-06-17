@@ -102,7 +102,7 @@ setoff(offer);
 const ans=async ({answer})=>{
      await peerRef.current.setRemoteDescription(new RTCSessionDescription(answer));
   if(candi){
-    peerRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+    peerRef.current.addIceCandidate(new RTCIceCandidate(candi));
  
   }
 
