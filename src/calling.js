@@ -89,7 +89,7 @@ const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false})
 
 
 
-}
+};
 //receive call
 const receive=async ({from ,offer})=>{
   setfr(from) ; 
@@ -103,7 +103,7 @@ const ans=async ({answer})=>{
      await peeRef.current.setRemoteDescription(new RTCSessionDescription(answer));
 
 };
-const cand=async({candidate})  {
+const cand=async({candidate}) => {
     if(candidate){
      peerRef.current.addIceCandidate(new RTCIceCandidate(candidate));
  
@@ -141,7 +141,7 @@ if(registered){
 useEffect(userregister,[registered]);
 const handleuserchange=(e)=>{
     setuserid(e.target.value);
-}
+};
 const handleregister=()=>{
   if(userid.trim()){
     setregistered(true);
@@ -149,7 +149,7 @@ const handleregister=()=>{
   }
   alert("please enter the user id");
 
-}
+};
 
 
 
