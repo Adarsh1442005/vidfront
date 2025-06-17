@@ -40,6 +40,16 @@ peer.ontrack=(event)=>{
 };
 const offer=await peer.createOffer();
 await peer.setLocalDescription(offer);
+peer.onicecandidate=(event)=>{
+if(event.candidate){
+socket.emit("ice-candidate",{to:receiverId,candidate:event.candidate});
+  
+};
+
+
+  
+};
+  
 socket.emit("calluser",{to:receiverid, offer,from:userid});
 peerRef.current=peer;
 
@@ -64,10 +74,17 @@ const stream=await navigator.mediaDevices.getUserMedia({video:true,audio:false})
 
 
   };
+  
   await peer.setRemoteDescription(new RTCSessionDescription(off));
   const answer=await peer.createAnswer();
   await peer.setLocalDescription(answer);
   socket.emit("answer-call",{answer,to:fr});
+  peer.onicecandidate=(event)=>{
+   if(event.candidate){
+     socket.emit("ice-candidate",{to:fr ,candidate:event.candidate});
+   }
+
+  };
   peerRef.current=peer;
 
 
@@ -81,7 +98,22 @@ setoff(offer);
  
 
 };
+//answercall
+const ans=async ({answer})=>{
+     await peeRef.current.setRemoteDescription(new RTCSessionDescription(answer));
+
+};
+const cand=async({candidate})  {
+    if(candidate){
+     peerRef.current.addIceCandidate(new RTCIceCandidate(candidate));
+ 
+      
+    }
+
+};
 socket.on("receivecall",receive);
+socket.on("answercall",ans);  
+socket.on("ice-candidate",cand);  
 
 
 
