@@ -190,7 +190,7 @@ const handleregister=()=>{
       if(receiverid){
       socket.emit("rejectcall",{to:receiverid,code:1})}
       else{
- socket.emit("rejectcall",{to:fr:code:1});
+ socket.emit("rejectcall",{to:fr,code:1});
       return;
         
       }
