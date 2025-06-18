@@ -160,16 +160,49 @@ const handleregister=()=>{
 
 };
   const rejectcall=()=>{
+    if(peerRef.current){
   peerRef.current.close() ; 
    peerRef.current=null;
-    localVideoRef.current.srcObject.getTracks().forEach(track => track.stop()); // Stop media
+      localVideoRef.current.srcObject.getTracks().forEach(track => track.stop()); // Stop media
     localVideoRef.current.srcObject = null;
-
     alert("the call is going to be dissconnect");
     setcaller(false);
     setreceive(false);
     setconnect(false);
     setcallerrec(false);
+      if(!receiverid){
+      socket.emit("rejectcall",{to:fr,code:'1'});}
+      else{
+        socket.emit("rejectcall",{to:receiverid,code:'1'});
+        
+      }
+      return;
+    }
+    
+    if(localVideoRef.current){
+    localVideoRef.current.srcObject.getTracks().forEach(track => track.stop()); // Stop media
+    localVideoRef.current.srcObject = null;
+       alert("the call is going to be dissconnect");
+      setcaller(false);
+    setreceive(false);
+    setconnect(false);
+    setcallerrec(false);
+      if(receiverid){
+      socket.emit("rejectcall",{to:receiverid,code:1})}
+      else{
+ socket.emit("rejectcall",{to:fr:code:1});
+      return;
+        
+      }
+      
+    
+
+   alert("call is going to be disconnect");
+    setcaller(false);
+    setreceive(false);
+    setconnect(false);
+    setcallerrec(false);
+    socket.emit("rejectcall",{to:fr,code:'1'});
     return;
 
     
@@ -284,6 +317,8 @@ return (
       />
       <span className="text-xs text-gray-300">Receiver</span>
     </div>
+  <button  onClick={rejectcall} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">call end</button> 
+          
   </div>
 </div>
 )
@@ -303,7 +338,7 @@ return (
           Accept
         </button>
         <button
-         // onClick={handleRejectCall}
+         onClick={rejectcall};
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow"
         >
           Reject
