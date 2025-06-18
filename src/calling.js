@@ -193,7 +193,7 @@ const handleregister=()=>{
  socket.emit("rejectcall",{to:fr,code:1});
       return;
         
-      }
+      }}
       
     
 
@@ -389,5 +389,5 @@ return (
 </div>
 </div>
 </div>
-);
-}};
+);}
+
