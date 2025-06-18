@@ -321,6 +321,7 @@ return (
       />
       <span className="text-xs text-gray-300">Receiver</span>
     </div>
+    <button   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">call end</button>     
   </div>
 </div>
 )
