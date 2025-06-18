@@ -160,7 +160,11 @@ const handleregister=()=>{
 
 };
   const rejectcall=()=>{
+  peerRef.current.close() ; 
    peerRef.current=null;
+    localVideoRef.current.srcObject.getTracks().forEach(track => track.stop()); // Stop media
+    localVideoRef.current.srcObject = null;
+
     alert("the call is going to be dissconnect");
     setcaller(false);
     setreceive(false);
