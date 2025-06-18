@@ -233,7 +233,7 @@ return (
             </div>
           </>
         ) }
-       {registered && reg && !caller && !receiver && !connect && !callerrec && (
+       {registered  && !caller && !receiver && !connect && !callerrec && (
           <div>
             <p className="text-cyan-300 mb-4 text-sm">
               Logged in as: <span className="font-medium">{userid}</span>
