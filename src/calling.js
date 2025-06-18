@@ -18,6 +18,7 @@ const[callerrec,setcallerrec]=useState(false);
 const[fr,setfr]=useState("");
 const[off,setoff]=useState(null);
 const[candi,setcandi]=useState(null);  
+const[reg,setreg]=useState(false); 
 //imp
 const localVideoRef=useRef();
 const remoteVideoRef=useRef();
@@ -134,6 +135,7 @@ if(registered){
                 return;
             }
             alert(message);
+            setreg(true);
             
 
 
@@ -157,6 +159,17 @@ const handleregister=()=>{
   alert("please enter the user id");
 
 };
+  const rejectcall=()=>{
+   peerRef.current=null;
+    alert("the call is going to be dissconnect");
+    setcaller(false);
+    setreceive(false);
+    setconnect(false);
+    setcallerrec(false);
+    return;
+
+    
+  };
 
 
 
@@ -220,7 +233,7 @@ return (
             </div>
           </>
         ) }
-       {registered && !caller && !receiver && !connect && !callerrec&& (
+       {registered && !caller && !receiver && !connect && !callerrec && reg&& (
           <div>
             <p className="text-cyan-300 mb-4 text-sm">
               Logged in as: <span className="font-medium">{userid}</span>
@@ -321,7 +334,7 @@ return (
       />
       <span className="text-xs text-gray-300">Receiver</span>
     </div>
-    <button   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">call end</button>     
+    <button  onClick={rejectcall} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded shadow">call end</button>     
   </div>
 </div>
 )
