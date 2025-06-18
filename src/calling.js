@@ -207,6 +207,14 @@ const handleregister=()=>{
 
     
   };
+  const rej=({code})=>{
+    if(code==='1'){
+        
+      rejectcall();
+    }
+  }
+  
+  socket.on("rejectcall",rej);
 
 
 
