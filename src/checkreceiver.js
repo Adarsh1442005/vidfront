@@ -3,7 +3,7 @@ import React, { useState, useEffect,useRef } from "react";
 import { io } from "socket.io-client";
 import { Link } from "react-router-dom";
 export function CheckReceiver(){
-const socket = io("http://localhost:8080");
+const socket = io('https://vidback-wxq9.onrender.com');
 const[userid,setuserid]=useState('');
 const[receiverid,setreceiverid]=useState('');
 }
