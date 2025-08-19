@@ -6,7 +6,7 @@ const conf = {
 
 export const Receiver=()=>{
     const[status,setstatus]=useState(`📞 Incoming call from ${localStorage.getItem("from")}`);
-    const socket=io('http://localhost:8080')
+    const socket=io('https://vidback-wxq9.onrender.com');
     const [inoffer,setinoffer]=useState(localStorage.getItem("off"));
     const[callerId,setcallerId]=useState(localStorage.getItem("from"));
     const localVideoRef=useRef(null);
