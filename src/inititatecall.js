@@ -6,7 +6,7 @@ const config = {
 
 export const Initiate=()=>{
     
-   const socket =io("http://localhost:8080");
+   const socket =io("https://vidback-wxq9.onrender.com");
    const receiverid=localStorage.getItem("receiver");
 const [status,setstatus]=useState("Ready to call");
 const[calling,setcalling]=useState(false);
