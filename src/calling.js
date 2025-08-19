@@ -6,7 +6,7 @@ import { Initiate } from "./inititatecall";
 import { useNavigate } from 'react-router-dom';
 
 export const Call=()=>{
-const socket = io("wss://vidback-2.onrender.com");
+const socket = io('https://vidback-wxq9.onrender.com');
 const[userid,setuserid]=useState("");
 const[receiverid,setreceiverid]=useState("");
 const[registered,setregistered]=useState(false);
